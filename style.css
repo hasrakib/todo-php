@@ -1,0 +1,28 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-new-task{
+    margin: 40px 0;
+}
+
+.add-new-task input, button {
+    font-family: "montserrat";
+    font-size: 20px;
+}
+
+.current-tasks label{
+    font-family: "montserrat";
+    font-size: 20px;
+    color: red;
+}
+
+.completed-tasks p{
+    font-family: "montserrat";
+    font-size: 20px;
+    color: green;
+    text-decoration:line-through;
+}
