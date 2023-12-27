@@ -50,12 +50,12 @@ $result = $conn->query($sql); ?>
             // Close connection
             // $conn->close();
             ?>
-            <div class="add-new-task">
-                <form action="insert.php" method="post">
-                    <input type="text" name="task">
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
+        </div>
+        <div class="add-new-task">
+            <form action="insert.php" method="post">
+                <input type="text" name="task">
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </main>
 </body>
