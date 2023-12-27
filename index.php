@@ -61,3 +61,5 @@ $result = $conn->query($sql); ?>
 </body>
 
 </html>
+
+<!-- This is from ifty to learn git clone feature -->
