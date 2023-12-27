@@ -50,14 +50,12 @@ $result = $conn->query($sql); ?>
             // Close connection
             // $conn->close();
             ?>
-            <button onclick="buttonClicked()">Add</button>
-            <script>
-                function buttonClicked() {
-                     $sqlquerry = "INSERT INTO todov1 VALUES (NULL, '1', 'this is hard code')";
-            $conn->query($sql);
-
-                }
-            </script>
+            <div class="add-new-task">
+                <form action="insert.php" method="post">
+                    <input type="text" name="task">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </div>
     </main>
 </body>
