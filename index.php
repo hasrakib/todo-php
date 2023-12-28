@@ -12,6 +12,34 @@ $result = $conn->query($sql); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO DO</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.task-checkbox').change(function () {
+                var taskId = $(this).siblings('.task-id').val();
+                var isChecked = $(this).prop('checked');
+
+                
+                $.ajax({
+                    type: 'POST',
+                    url: 'check.php',
+                    data: { checkbox: isChecked ? '1' : '0', id: taskId },
+                    success: function (data) {
+                        
+                        if (isChecked) {
+                            $(this).parent().appendTo('.completed-tasks');
+                        } else {
+                            
+                            $(this).parent().remove();
+                        }
+                    },
+                    error: function () {
+                        alert('An error occurred while updating the task.');
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -21,8 +49,10 @@ $result = $conn->query($sql); ?>
             if ($result->num_rows > 0) {
                 while ($row_current = $result->fetch_assoc()) {
                     if ($row_current["status"] == 0) { ?>
-                        <p><input type="checkbox" id="<?php echo $row_current["id"] ?>">
+                         <p>
+                            <input type="checkbox" class="task-checkbox" id="<?php echo $row_current["id"] ?>">
                             <label for="<?php echo $row_current["id"] ?>"><?php echo $row_current["task"] ?></label>
+                            <input type="hidden" class="task-id" value="<?php echo $row_current["id"] ?>">
                         </p>
                 <?php }
                 } ?>
